@@ -7,15 +7,7 @@ const authRoutes = require('./authRoutes');
 const app = express();
 
 // Middleware
-app.use('/api', createProxyMiddleware({
-  target: 'https://sven-x7t0.onrender.com',
-  changeOrigin: true,
-  pathRewrite: { '^/api': '' },
-  onProxyRes: function(proxyRes, req, res) {
-    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-  }
-}));
-
+app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
